@@ -1,6 +1,7 @@
 package com.chat_app.ChatApplication.controllers;
 
 import com.chat_app.ChatApplication.entities.Message;
+import com.chat_app.ChatApplication.entities.Room;
 import com.chat_app.ChatApplication.payload.MessageRequest;
 import com.chat_app.ChatApplication.repositories.RoomRepository;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
@@ -22,7 +23,8 @@ public class ChatController {
             @DestinationVariable String roomId,
             @RequestBody MessageRequest request
             ){
-        Room room = roomRepository
+        Room room = roomRepository.findByRoomId(request.getRoomId());
+
     }
 
 
